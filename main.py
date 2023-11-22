@@ -1,9 +1,15 @@
-print("hellow world ")
-print("coba")
-print("hari : Selasa Tanggal: 21 November 2023 ")
+from flask import Flask,request,jsonify
 
-# git status
-# git add <nama file>
-# git commit -m "keterangan_commit"
-# git pull origin main
-# git push origin main
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return 'Hello, World!'
+
+@app.route("/login", methods=["GET"])
+def login():
+    data = request.get_json()
+    return jsonify(data)
+
+if __name__ == '__main__':
+    app.run(debug = True)
